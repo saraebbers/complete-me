@@ -20,7 +20,7 @@ describe('TRIE', () => {
     expect(trie.rootNode).to.eq(null);
   });
 
-  describe('insert', () => {
+  describe.skip('insert', () => {
     it('should take in a word and increment the word count', () => {
       trie.insert('hello');
       trie.insert('hell');
@@ -66,4 +66,17 @@ describe('TRIE', () => {
       expect(trie.count()).to.eq(4);
     });
    });
+  describe('SUGGEST', () => {
+    it('should offer words that include the prefix entered', () => {
+      trie.insert('hello');
+      trie.insert('hell');
+      trie.insert('hellllllllllo')
+      trie.insert('super');
+      trie.insert('Awesome');
+      trie.insert('AWE');
+      trie.suggest('h');
+      // console.log(JSON.stringify(trie, null, 2));
+      // expect(trie.count()).to.eq(5);
+    });
+});
 });
