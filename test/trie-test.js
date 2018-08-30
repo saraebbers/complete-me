@@ -5,7 +5,7 @@ import Trie from '../lib/Trie.js';
 import fs from 'fs';
 
 const text = '/usr/share/dict/words';
-const dictionary = fs.readFile.Sync(text).toStringify();
+const dictionary = fs.readFileSync(text).toString().trim().split('\n');
 
 describe('TRIE', () => {
   let trie;
@@ -70,7 +70,7 @@ describe('TRIE', () => {
       expect(trie.count()).to.eq(4);
     });
    });
-  describe.skip('suggest', () => {
+  describe('suggest', () => {
     it.skip('should offer words that include the prefix entered', () => {
       trie.insert('brother');
       trie.insert('broth');
@@ -84,11 +84,11 @@ describe('TRIE', () => {
       assert.deepEqual(trie.suggest('br'), expected2);
     });
 
-    describe.skip('populate', () => {
-      it.skip('should be able to accept  a dictionary', () => {
-        prefixTrie.populate(dictionary);
-        prefixTrie.count();
-        assert.equal(prefixTrie.count(), 235886)
+    describe('populate', () => {
+      it('should be able to accept  a dictionary', () => {
+        trie.populate(dictionary);
+        trie.count();
+        assert.equal(trie.count(), 234371)
       })
     })
 });
