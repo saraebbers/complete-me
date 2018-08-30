@@ -87,8 +87,8 @@ describe('TRIE', () => {
       trie.insert('bright');
       trie.insert('braggart');
       trie.insert('brash');
-      // trie.suggest('br');
-      // console.log(JSON.stringify(trie, null, 2));
+      trie.suggest('br');
+      console.log(JSON.stringify(trie, null, 2));
       let expected2 = [ 'brash', 'braggart', 'brighton', 'bright', 'brother', 'broth' ];
       assert.deepEqual(trie.suggest('br'), expected2);
     });
