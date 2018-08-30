@@ -14,17 +14,15 @@ describe('TRIE', () => {
     trie = new Trie();
   });
 
-  it.skip('should be a function', () => {
+  it('should be a function', () => {
   assert.isFunction(Trie);
-  
-
   });
 
-  it.skip('should set its default rootNode to null', () => { 
+  it('should set its default rootNode to null', () => { 
     expect(trie.rootNode).to.eq(null);
   });
 
-  describe.skip('insert', () => {
+  describe('insert', () => {
     it('should take in a word and increment the word count', () => {
       trie.insert('hello');
       trie.insert('hell');
@@ -34,34 +32,44 @@ describe('TRIE', () => {
       console.log(JSON.stringify(trie, null, 2));
       expect(trie.count()).to.eq(5);
     });
-    it.skip('have a root node of root, children node of d, children node of o', () => {
-      trie.insert('do');
+    it('have a root node of root, children node of d, children node of o', () => {
+      trie.insert('dog');
       console.log(JSON.stringify(trie, null, 2));
       console.log(trie.rootNode);
       let expected1 = {
-        "wordCount": 1,
-        "rootNode": {
-          "letter": "Root",
-          "children": [
-            {
-              "letter": "D",
+         "wordCount": 1,
+            "rootNode": {
+              "letter": "Root",
               "children": [
                 {
-                  "letter": "O",
-                  "children": [],
-                  "end": true
+                  "letter": "D",
+                  "children": [
+                    {
+                      "letter": "O",
+                      "children": [
+                        {
+                          "letter": "G",
+                          "children": [],
+                          "end": true,
+                          "word": "dog"
+                        }
+                      ],
+                      "end": false,
+                      "word": ""
+                    }
+                  ],
+                  "end": false,
+                  "word": ""
                 }
               ],
-              "end": false
-            }
-          ],
-          "end": false
+              "end": false,
+              "word": ""
         }
       };
       assert.deepEqual(trie, expected1);
 
     });
-    it.skip('should not increment the word count if the same word is inserted twice', () => {
+    it('should not increment the word count if the same word is inserted twice', () => {
       trie.insert('brother');
       trie.insert('sister');
       trie.insert('brother');
@@ -70,8 +78,9 @@ describe('TRIE', () => {
       expect(trie.count()).to.eq(4);
     });
    });
+
   describe('suggest', () => {
-    it.skip('should offer words that include the prefix entered', () => {
+    it('should offer words that include the prefix entered', () => {
       trie.insert('brother');
       trie.insert('broth');
       trie.insert('brighton')
@@ -83,13 +92,13 @@ describe('TRIE', () => {
       let expected2 = [ 'brash', 'braggart', 'brighton', 'bright', 'brother', 'broth' ];
       assert.deepEqual(trie.suggest('br'), expected2);
     });
+  }); 
 
     describe('populate', () => {
-      it('should be able to accept  a dictionary', () => {
+      it('should be able to accept a dictionary', () => {
         trie.populate(dictionary);
         trie.count();
         assert.equal(trie.count(), 234371)
       })
     })
-});
 });
