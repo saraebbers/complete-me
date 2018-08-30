@@ -20,7 +20,7 @@ describe('TRIE', () => {
     expect(trie.rootNode).to.eq(null);
   });
 
-  describe('insert', () => {
+  describe.skip('insert', () => {
     it('should take in a word and increment the word count', () => {
       trie.insert('hello');
       trie.insert('hell');
@@ -34,7 +34,7 @@ describe('TRIE', () => {
       trie.insert('do');
       console.log(JSON.stringify(trie, null, 2));
       console.log(trie.rootNode);
-      let expected = {
+      let expected1 = {
         "wordCount": 1,
         "rootNode": {
           "letter": "Root",
@@ -54,7 +54,7 @@ describe('TRIE', () => {
           "end": false
         }
       };
-      assert.deepEqual(trie, expected);
+      assert.deepEqual(trie, expected1);
 
     });
     it.skip('should not increment the word count if the same word is inserted twice', () => {
@@ -66,4 +66,18 @@ describe('TRIE', () => {
       expect(trie.count()).to.eq(4);
     });
    });
+  describe('SUGGEST', () => {
+    it('should offer words that include the prefix entered', () => {
+      trie.insert('brother');
+      trie.insert('broth');
+      trie.insert('brighton')
+      trie.insert('bright');
+      trie.insert('braggart');
+      trie.insert('brash');
+      // trie.suggest('br');
+      // console.log(JSON.stringify(trie, null, 2));
+      let expected2 = [ 'brash', 'braggart', 'brighton', 'bright', 'brother', 'broth' ];
+      assert.deepEqual(trie.suggest('br'), expected2);
+    });
+});
 });
