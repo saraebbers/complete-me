@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate",
+  "name": "@slebbers/boilerplate",
   "version": "0.0.1",
   "description": "Super awesome testing boilerplate",
   "main": "index.js",
@@ -28,5 +28,13 @@
     "style-loader": "^0.22.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saraebbers/complete-me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saraebbers/complete-me/issues"
+  },
+  "homepage": "https://github.com/saraebbers/complete-me#readme"
 }
